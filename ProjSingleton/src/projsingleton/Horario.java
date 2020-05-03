@@ -5,8 +5,8 @@ public class Horario {
     int hh,mm,ss;
     String hora;
 
-    Horario (String hora){
-        setHora(hora);
+    Horario (){
+        
     }
     public int getHh() {
         return hh;
@@ -46,5 +46,9 @@ public class Horario {
         setSs(Integer.parseInt(divh[2]));
         this.hora = this.hh+":"+this.mm+":"+this.ss;
     }
+	@Override
+	public String toString() {
+		return "Horario: [" + hh + ":" + mm + ":" + ss + "]";
+	}
     
 }

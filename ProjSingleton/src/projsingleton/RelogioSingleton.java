@@ -2,12 +2,12 @@ package projsingleton;
 public class RelogioSingleton {
 
     private static RelogioSingleton instancia;
-    Data dt = new Data("23/03/2020");
-    Horario hr = new Horario("02:30:50");
+    Data dt = new Data();
+    Horario hr = new Horario();
     String relogio;
     
     private RelogioSingleton(){
-        setRelogio(relogio);
+       setRelogio("01/01/1900", "00:00:00");
     }
     
     public static RelogioSingleton getInstance(){
@@ -21,8 +21,15 @@ public class RelogioSingleton {
         return relogio;
     }
 
-    public void setRelogio(String relogio) {
-        this.relogio = "Data: "+dt.databr+" - "+hr.hora;
+    public void setRelogio(String data, String hora) {
+        this.dt.setData(data);
+        this.hr.setHora(hora);
+        this.relogio = "Data: "+dt+", " + "Horario " + hr.getHora();
     }
+
+	@Override
+	public String toString() {
+		return "RelogioSingleton - " + dt + ", " + hr;
+	}
     
 }

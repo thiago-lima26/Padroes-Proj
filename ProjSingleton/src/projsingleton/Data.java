@@ -3,10 +3,9 @@ package projsingleton;
 public class Data {
     
     int dia,mes,ano;
-    String databr;
     
-    Data(String databr){
-        setData(databr);
+    Data(){
+        
     }
     public int getDia() {
         return dia;
@@ -18,6 +17,8 @@ public class Data {
                 this.mes==6 || this.mes==9 || this.mes==11) && dia<=30) || (this.mes==2 &&(dia<=29 && 
                 this.ano%4==0)|| dia<=28)))
             this.dia = dia;
+        else
+            throw new IllegalArgumentException("Dia Inválido!!!");
     }
 
     public int getMes() {
@@ -27,6 +28,8 @@ public class Data {
     public void setMes(int mes) {
         if (mes>=1&&mes<=12)
             this.mes = mes;
+        else 
+            throw new IllegalArgumentException("Mês Inválido!!!");
     }
 
     public int getAno() {
@@ -34,12 +37,7 @@ public class Data {
     }
 
     public void setAno(int ano) {
-        if(ano<=2020)
-            this.ano = ano;
-    }
-
-    public String getData() {
-        return databr;
+    	this.ano = ano;
     }
 
     public void setData(String data) {
@@ -47,6 +45,11 @@ public class Data {
         setAno(Integer.parseInt(divdt[2]));
         setMes(Integer.parseInt(divdt[1]));
         setDia(Integer.parseInt(divdt[0]));
-        this.databr = this.dia+"/"+this.mes+"/"+this.ano;
-    }  
+    }
+    
+    @Override
+	public String toString() {
+		return "Data [" + dia + " / " + mes + " / " + ano + "]";
+	}
+	    
 }
